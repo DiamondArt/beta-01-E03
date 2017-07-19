@@ -15,6 +15,16 @@ export the function `repeat` that should work just like
 [`String.prototype.repeat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat)
 except it should not be a method but be given the string as first arguments
 
+```js
+// Wrinting Methods as normal functions
+'pouet'.repeat(5)
+
+// should be called like so :
+repeat('pouet', 5)
+
+// so they all need one more argument, the first (the base string in this case)
+```
+
 #### test `length`
 export the function `length` that should return the length of the string without
 using the [`.length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length) property
@@ -52,6 +62,11 @@ except it should not be a method but be given the string as first arguments
 export the function `replace` that should work just like
 [`String.prototype.replace`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
 except it should not be a method but be given the string as first arguments
+and not handle `RegExp`.
+
+#### test `replaceAll`
+export the function `replaceAll` that should work just like replace but for all
+occurences of the string.
 
 #### test `slice`
 export the function `slice` that should work just like
