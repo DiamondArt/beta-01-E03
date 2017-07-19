@@ -35,9 +35,8 @@ export the function `includes` that should work just like
 except it should not be a method but be given the string as first arguments
 
 #### test `isWhiteSpace`
-export the function `isWhiteSpace` that should work just like
-[`String.prototype.isWhiteSpace`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/isWhiteSpace)
-except it should not be a method but be given the string as first arguments
+export the function `isWhiteSpace` that takes one character and tell if it's a 
+white space.
 
 #### test `padEnd`
 export the function `padEnd` that should work just like

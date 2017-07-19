@@ -92,6 +92,9 @@ module.exports = ({ test, describe, exports, code, $ }) => {
         'replaceAll',
         'slice',
         'trim',
+        'substr',
+        'substring',
+        'split',
       ].map(key => test(`method ${key} should not be used, code your own !`)
         .value($(`MemberExpression > #${key}`).length).equal(0)))),
 
@@ -130,6 +133,7 @@ module.exports = ({ test, describe, exports, code, $ }) => {
     testMethod('padEnd', padStrings),
     testMethod('padStart', padStrings),
     testMethod('replace', replaceStrings),
+    test.limit(990000),
     test.against('replaceAll',
       (str, a, b) => str.split(a).join(b), replaceStrings),
 

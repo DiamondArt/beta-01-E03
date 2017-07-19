@@ -31,19 +31,15 @@ const jadenTweets = [
   'water in the eyes and alcohol in the eyes are pretty much the same i know this from first hand experience.',
 ].map(n => [n])
 
-
-
-
-
 module.exports = ({ describe, test, $ }) => [
   describe('BONUS', [
     test.against(`jaydenSmithCase`, str => str
       .split(' ')
       .map(lodash.capitalize)
       .join(' '), jadenTweets),
-    test.against('camelCase', lodash.camelCase),
-    test.against('kebabCase', lodash.kebabCase),
-    test.against('snakeCase', lodash.snakeCase),
+    test.against('camelCase', lodash.camelCase, jadenTweets),
+    test.against('kebabCase', lodash.kebabCase, jadenTweets),
+    test.against('snakeCase', lodash.snakeCase, jadenTweets),
     testLoop($, test, 'for', 'ForStatement'),
     testLoop($, test, 'for..of', 'ForOfStatement'),
     testLoop($, test, 'for..in', 'ForinStatement'),
