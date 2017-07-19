@@ -111,10 +111,10 @@ module.exports = ({ test, describe, exports, code, $ }) => {
         .map('length')
         .equal(0),
 
-      test("should return the string 'hello world'")
+      test("should return the string 'Hello, World!'")
         .value(exports.hw)
         .map(fn => fn())
-        .equal('hello world'),
+        .equal('Hello, World!'),
     ]),
 
     test.against('isNumber',

@@ -1,6 +1,6 @@
 ## TEST
 #### test `hw`
-export the function `hw` that returns the string `'hello world'`
+export the function `hw` that returns the string `'Hello, World!'`
 
 #### test `isNumber`
 export the function `isNumber` that should return true if the given value is
