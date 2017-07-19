@@ -82,7 +82,6 @@ module.exports = ({ test, describe, exports, code, $ }) => {
       ].map(key => test(`${key} should not be used`)
         .value($(`#${key}`).length).equal(0))
       .concat([
-        'length',
         'includes',
         'indexOf',
         'lastIndexOf',
@@ -96,7 +95,13 @@ module.exports = ({ test, describe, exports, code, $ }) => {
         'substring',
         'split',
       ].map(key => test(`method ${key} should not be used, code your own !`)
-        .value($(`MemberExpression > #${key}`).length).equal(0)))),
+        .value($(`CallExpression > MemberExpression > #${key}`).length)
+        .equal(0)))
+      .concat([
+        'length'
+      ].map(key => test(`property ${key} should not be used, code your own`)
+        .value($(`MemberExpression > #${key}`).length)
+        .equal(0)))),
 
     describe('hello world', [
       test.defined('hw'),
