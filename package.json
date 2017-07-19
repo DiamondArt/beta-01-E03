@@ -1,0 +1,19 @@
+{
+  "name": "S01E03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "update": "git checkout HEAD package.json test.js readme.md bonus.js && git pull base master",
+    "postinstall": "git remote add base https://thot.space/git/javascript/S01E03.git",
+    "debug": "node --use-strict --harmony-tailcalls node_modules/thot-tester/lib/tester",
+    "test": "node --use-strict --harmony-tailcalls node_modules/thot-tester/bin/tester"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "thot-tester": "^1.0.5"
+  }
+}
