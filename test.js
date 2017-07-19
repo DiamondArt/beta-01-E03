@@ -13,6 +13,7 @@ module.exports = ({ test, describe, exports, code, $ }) => {
     'saalutsaluut',
     'alut',
     'lut',
+    'luu',
     'ut',
     'saalu',
     'saal',
