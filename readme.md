@@ -1,14 +1,14 @@
 ## TEST
 #### test `hw`
-export the function `hw` that returns the string `'Hello world'`
+export the function `hw` that returns the string `'hello world'`
 
 #### test `isNumber`
 export the function `isNumber` that should return true if the given value is
 a number
 
 #### test `isString`
-export the function `even` that should work just like
-[`Math.even`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/even)
+export the function `isString` that should return true if the given value is
+a string
 
 #### test `repeat`
 export the function `repeat` that should work just like
