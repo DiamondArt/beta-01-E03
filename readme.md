@@ -10,6 +10,13 @@ a number
 export the function `isString` that should return true if the given value is
 a string
 
+#### test `capitalize`
+export the function `capitalize` that should [capitalize](http://www.grammarbook.com/punctuation/capital.asp) a word
+
+#### test `isWhiteSpace`
+export the function `isWhiteSpace` that takes one character and tell if it's a 
+white space.
+
 #### test `repeat`
 export the function `repeat` that should work just like
 [`String.prototype.repeat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat)
@@ -25,11 +32,6 @@ repeat('pouet', 5)
 // so they all need one more argument, the first (the base string in this case)
 ```
 
-#### test `match`
-export the function `match` that takes 3 arguments a string, a substring and
-an index and return `true` or `false` if the substring was found from the given
-index in the given string.
-
 #### test `reverse`
 export the function `reverse` that takes a string and return it's reversed
 value.
@@ -37,6 +39,11 @@ value.
 // Such as:
 reverse('abc') // => 'cba'
 ```
+
+#### test `match`
+export the function `match` that takes 3 arguments a string, a substring and
+an index and return `true` or `false` if the substring was found from the given
+index in the given string.
 
 #### test `indexOf`
 export the function `indexOf` that should work just like
@@ -47,10 +54,6 @@ except it should not be a method but be given the string as first arguments
 export the function `includes` that should work just like
 [`String.prototype.includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
 except it should not be a method but be given the string as first arguments
-
-#### test `isWhiteSpace`
-export the function `isWhiteSpace` that takes one character and tell if it's a 
-white space.
 
 #### test `padStart`
 export the function `padStart` that should work just like
@@ -72,9 +75,6 @@ except it should not be a method but be given the string as first arguments
 export the function `trim` that should work just like
 [`String.prototype.trim`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim)
 except it should not be a method but be given the string as first arguments
-
-#### test `capitalize`
-export the function `capitalize` that should [capitalize](http://www.grammarbook.com/punctuation/capital.asp) a word
 
 #### test `before`
 export the function `before` that take strings arguements and return the value

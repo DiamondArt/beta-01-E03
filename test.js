@@ -131,7 +131,30 @@ module.exports = ({ test, describe, exports, code, $ }) => {
     test.against('isString',
       str => (![]+[]).constructor === (str == null || str.constructor), types),
 
+    test.against('capitalize', str => str
+      ? str[0].toUpperCase() + str.slice(1)
+      : '', [
+      [ 'wow' ],
+      [ 'woW' ],
+      [ 'WOW' ],
+      [ '1wow' ],
+      [ '' ],
+    ]),
+
+    test.against('isWhiteSpace', c => /\s/.test(c), [
+      [ ' ' ],
+      [ '\t' ],
+      [ '\r' ],
+      [ '\n' ],
+      [ '\f' ],
+    ]),
+
     testMethod('repeat', stringParts.map((str, i) => [ str[0], i ])),
+    test.against('reverse', str => str
+      .split('')
+      .reverse()
+      .join(''), replaceStrings),
+
     test.against('match',
       (str, substr, index) => str.indexOf(substr, index) === index, [
       [ 'salut', 'sa', 0 ],
@@ -146,19 +169,8 @@ module.exports = ({ test, describe, exports, code, $ }) => {
       [ 'salut', 'lut', 50 ],
       [ 'salut', 'lut', 4 ],
     ]),
-    test.against('reverse', str => str
-      .split('')
-      .reverse()
-      .join(''), replaceStrings),
     testMethod('indexOf', stringParts.concat(stringWithIndex)),
     testMethod('includes', stringParts),
-    test.against('isWhiteSpace', c => /\s/.test(c), [
-      [ ' ' ],
-      [ '\t' ],
-      [ '\r' ],
-      [ '\n' ],
-      [ '\f' ],
-    ]),
     testMethod('padStart', padStrings),
     testMethod('replace', replaceStrings),
     testMethod('slice', [
@@ -197,16 +209,6 @@ module.exports = ({ test, describe, exports, code, $ }) => {
       const index = a.indexOf(b)
       return index === -1 ? '' : a.slice(index)
     }, stringParts),
-
-    test.against('capitalize', str => str
-      ? str[0].toUpperCase() + str.slice(1)
-      : '', [
-      [ 'wow' ],
-      [ 'woW' ],
-      [ 'WOW' ],
-      [ '1wow' ],
-      [ '' ],
-    ]),
 
     test.limit(990000),
     test.against('replaceAll',
