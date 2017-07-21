@@ -133,7 +133,7 @@ module.exports = ({ test, describe, exports, code, $ }) => {
 
     testMethod('repeat', stringParts.map((str, i) => [ str[0], i ])),
     test.against('match',
-      (str, substr, index) => str.indexOf(substr, index) === 0, [
+      (str, substr, index) => str.indexOf(substr, index) === index, [
       [ 'salut', 'sa', 0 ],
       [ 'salut', 'sa', 1 ],
       [ 'salut', 'lut', 1 ],
