@@ -23,6 +23,18 @@ module.exports = ({ test, describe, exports, code, $ }) => {
     'aal',
   ]
 
+  const stringWithIndex = [
+    [ 'saalutsalaat', 'a', 0 ],
+    [ 'saalutsalaat', 'a', -1 ],
+    [ 'saalutsalaat', 'a', 1 ],
+    [ 'saalutsalaat', 'a', 3 ],
+    [ 'saalutsalaat', 'a', 9 ],
+    [ 'saalutsalaat', 'a', 10 ],
+    [ 'saalutsalaat', 'a', 15 ],
+    [ 'saalutsalaat', 'a', 150 ],
+    [ 'saalutsalaat', 'aa', 4 ],
+  ]
+
   const replaceStrings = [
     [ '', 'a', '0' ],
     [ 'abcdef', 'a', '0' ],
@@ -97,11 +109,6 @@ module.exports = ({ test, describe, exports, code, $ }) => {
         'split',
       ].map(key => test(`method ${key} should not be used, code your own !`)
         .value($(`CallExpression > MemberExpression > #${key}`).length)
-        .equal(0)))
-      .concat([
-        'length'
-      ].map(key => test(`property ${key} should not be used, code your own`)
-        .value($(`MemberExpression > #${key}`).length)
         .equal(0)))),
 
     describe('hello world', [
@@ -125,9 +132,25 @@ module.exports = ({ test, describe, exports, code, $ }) => {
       str => (![]+[]).constructor === (str == null || str.constructor), types),
 
     testMethod('repeat', stringParts.map((str, i) => [ str[0], i ])),
-    test.against('length', a => a.length, testStrings.map(str => [ str ])),
-    testMethod('indexOf', stringParts),
-    testMethod('lastIndexOf', stringParts),
+    test.against('match',
+      (str, substr, index) => str.indexOf(substr, index) === 0, [
+      [ 'salut', 'sa', 0 ],
+      [ 'salut', 'sa', 1 ],
+      [ 'salut', 'lut', 1 ],
+      [ 'salut', 'lut', 2 ],
+      [ 'salutlut', 'lut', 2 ],
+      [ 'salutlut', 'lut', 3 ],
+      [ 'salulut', 'lut', 3 ],
+      [ 'salut', 'lut', 3 ],
+      [ 'sal ut', 'lut', 3 ],
+      [ 'salut', 'lut', 50 ],
+      [ 'salut', 'lut', 4 ],
+    ]),
+    test.against('reverse', str => str
+      .split('')
+      .reverse()
+      .join(''), replaceStrings),
+    testMethod('indexOf', stringParts.concat(stringWithIndex)),
     testMethod('includes', stringParts),
     test.against('isWhiteSpace', c => /\s/.test(c), [
       [ ' ' ],
@@ -136,13 +159,8 @@ module.exports = ({ test, describe, exports, code, $ }) => {
       [ '\n' ],
       [ '\f' ],
     ]),
-    testMethod('padEnd', padStrings),
     testMethod('padStart', padStrings),
     testMethod('replace', replaceStrings),
-    test.limit(990000),
-    test.against('replaceAll',
-      (str, a, b) => str.split(a).join(b), replaceStrings),
-
     testMethod('slice', [
       [ 0 ],
       [ 1 ],
@@ -188,7 +206,14 @@ module.exports = ({ test, describe, exports, code, $ }) => {
       [ 'WOW' ],
       [ '1wow' ],
       [ '' ],
-    ])
+    ]),
+
+    test.limit(990000),
+    test.against('replaceAll',
+      (str, a, b) => str.split(a).join(b), replaceStrings),
+    test.limit(90000),
+    testMethod('padEnd', padStrings),
+    testMethod('lastIndexOf', stringParts.concat(stringWithIndex)),
     //*/
   ]
 }

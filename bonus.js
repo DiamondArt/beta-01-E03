@@ -44,9 +44,5 @@ module.exports = ({ describe, test, $ }) => [
     testLoop($, test, 'for..of', 'ForOfStatement'),
     testLoop($, test, 'for..in', 'ForinStatement'),
     testLoop($, test, 'while', 'WhileStatement'),
-  ].concat($('arrow').map(def =>
-    test(`function line ${def.loc.start.line} column ${
-      def.loc.start.column} is a single expression`)
-      .value(def.body.type)
-      .notEqual('BlockStatement')))),
+  ]),
 ]
